@@ -1,0 +1,23 @@
+unsigned long readCount(void)
+{
+  unsigned long Count;
+  unsigned char i;
+  pinMode(DT, OUTPUT);
+  digitalWrite(DT,HIGH);
+  digitalWrite(SCK,LOW);
+  Count=0;
+  pinMode(DT, INPUT);
+  while(digitalRead(DT));
+  for (i=0;i<24;i++)
+  {
+    digitalWrite(SCK,HIGH);
+    Count=Count<<1;
+    digitalWrite(SCK,LOW);
+    if(digitalRead(DT)) 
+    Count++;
+  }
+  digitalWrite(SCK,HIGH);
+  Count=Count^0x800000;
+  digitalWrite(SCK,LOW);
+  return(Count);
+}
