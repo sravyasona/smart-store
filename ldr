@@ -1,6 +1,7 @@
 #define buzzer 10     // buzzer at pin 5
 #define sensor 12      // ir sensor at pin 6
 int sound=250;         // set buzzer sound
+#include <LiquidCrystal.h>
 void setup()
 {
 Serial.begin(9600);
