@@ -2,7 +2,7 @@
 
 #define TRIGGER_PIN  12 
 #define ECHO_PIN     11  
-#define MAX_DISTANCE 300 
+#define MAX_DISTANCE 30 
 
 #include <LiquidCrystal.h> 
 int RS=A5, E=A4, D4=A3, D5=A2, D6=A1, D7=A0;
