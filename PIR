@@ -1,7 +1,3 @@
-
-
-
-
 #define led 4            // led at pin 4
 #define buzzer 5      // buzzer at pin 5
 #define sensor 6      // ir sensor at pin 6
