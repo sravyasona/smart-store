@@ -1,16 +1,19 @@
+#include<Servo.h>
 
-
+Servo myservo;
 int const trigPin = 10;
 int const echoPin = 9;
 int const buzzPin = 2;
+int const ldrpin = A0;
+int const seropin = 8;
 
 void setup()
 {
-  
+   Serial.begin(9600);
   pinMode(trigPin, OUTPUT); // trig pin will have pulses output
   pinMode(echoPin, INPUT); // echo pin should be input to get pulse width
   pinMode(buzzPin, OUTPUT); // buzz pin is output to control buzzering
-
+  myservo.attach(servopin);
 }
 
 
