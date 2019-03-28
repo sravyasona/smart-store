@@ -2,15 +2,23 @@
 
 Servo myservo;
 int val;
+int const ldrpin = A0;
+int const servopin = 8;
+int ldrvalue;
+int angle = 0;
 
 void setup()
 {
+Serial.begin(9600);
 myservo.attach(12);
 }
 void loop()
 {
+ ldrvalue = analogRead(ldrpin);
 val = analogRead(0);
 val = map(val, 0, 1023, 0, 179);
 myservo.write(val);
 delay(15);
 }
+
+
