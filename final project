@@ -19,6 +19,11 @@ void setup()
 
 void loop()
 {
+  ldrvalue = analogRead(ldrpin);
+  angle = map (ldrvalue, 0, 1023, 0, 180);
+  Serial.println(angle);
+  myservo.write(angle);
+  delay(10);
   // Duration will be the input pulse width and distance will be the distance to the obstacle in centimeters
   int duration, distance;
   // Output pulse with 1ms width on trigPin
