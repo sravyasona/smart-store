@@ -1,0 +1,34 @@
+#include <Servo.h>
+
+Servo myservo;
+
+int ldr = A0; //input pin for sensor
+int val;         //variable for sensor value's
+int ldrvalue = 600;      //threshold LDR
+int pos = 0;  //rest position
+
+void setup()
+{
+  myservo.attach(2);  // attaches the servo on pin 9 to the servo object
+  Serial.begin(9600);
+  pinMode(ldr, INPUT);
+  myservo.write(pos); //write rest position
+}
+
+void loop()
+{
+Serial.println(analogRead(ldr));     // Print the value from the sensor  
+val = analogRead(ldr);              // Read sensor vlue
+
+if (val < ldrvalue) {                //compare threshold to sensor value
+myservo.write(90);                //move servo to position given by the amount of light 
+delay(300);
+
+}
+
+else if (val > ldrvalue) {   //compare threshold to sensor value
+myservo.write(0);                 //move servo to position given by the amount of light 
+
+
+}
+}
