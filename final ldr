@@ -21,13 +21,14 @@ Serial.println(analogRead(ldr));     // Print the value from the sensor
 val = analogRead(ldr);              // Read sensor vlue
 
 if (val < ldrvalue) {                //compare threshold to sensor value
-myservo.write(90);                //move servo to position given by the amount of light 
-delay(300);
+myservo.write(0);                 //move servo to position given by the amount of light 
+
 
 }
 
 else if (val > ldrvalue) {   //compare threshold to sensor value
-myservo.write(0);                 //move servo to position given by the amount of light 
+myservo.write(90);                //move servo to position given by the amount of light 
+delay(300);
 
 
 }
