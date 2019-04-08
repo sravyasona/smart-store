@@ -1,0 +1,42 @@
+ #define ctsPin 2 
+  int value;
+  int low;
+ int ledPin = 13;
+ int high;
+ 
+ void setup()
+ {  
+     Serial.begin(9600);
+       pinMode(ledPin, OUTPUT);
+       pinMode(ctsPin, INPUT);
+     } 
+  void loop() 
+    { 
+      int ctsValue = digitalRead(ctsPin); 
+      if (ctsValue == LOW)
+        {  
+           digitalWrite(ledPin, HIGH);  
+           Serial.println("not touched");
+          
+        }
+     else
+        {    
+         digitalWrite(ledPin,LOW);
+             Serial.println("TOUCHED"); 
+              while (millis() < 30000000) 
+            {
+              // record the maximum sensor value
+              value = analogRead(ctsPin);
+              if (value > high) 
+                 {
+                   high = value;
+                 }
+              // record the minimum sensor value
+              if (value < low) 
+                 {
+                   low = value;
+                 }
+           }  
+          }  
+  
+      }
