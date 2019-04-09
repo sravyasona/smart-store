@@ -4,7 +4,7 @@ Servo myservo;
 int const trigPin = 10;
 int const echoPin = 9;
 int const buzzPin = 2;
-int const ldrpin = A0;
+int const ldrPin = A0;
 int const servopin = 8;
 int val;
 int thresh = 600;
@@ -51,6 +51,6 @@ delay(300);
    
       digitalWrite(buzzPin, HIGH);
     }
-    /
+    
     delay(60);
 }
