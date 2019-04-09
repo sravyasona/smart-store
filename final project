@@ -1,3 +1,7 @@
+#include <LiquidCrystal.h> //Please replace the single quote characters ('') with the parenthesis character (<>)
+ 
+LiquidCrystal lcd(0, 1, 4, 5, 6, 7); // Creates an LCD object. Parameters: (rs, enable, d4, d5, d6, d7)
+
 #include<Servo.h>
 
 Servo myservo;
@@ -13,7 +17,9 @@ int duration, distance;
 
 void setup()
 {
-   Serial.begin(9600);
+   //Serial.begin(9600);
+   
+  lcd.begin(16,2); // Initializes the interface to the LCD screen, and specifies the dimensions (width and height) of the display
   pinMode(trigPin, OUTPUT); // trig pin will have pulses output
   pinMode(echoPin, INPUT); // echo pin should be input to get pulse width
   pinMode(buzzPin, OUTPUT); // buzz pin is output to control buzzering
@@ -28,12 +34,12 @@ void loop()
 
 if (val < thresh) {                //compare threshold to sensor value
 myservo.write(0);                 //move servo to position given by the amount of light 
- digitalWrite(buzzPin, LOW);
+
 }
 
 else if (val > thresh) {   //compare threshold to sensor value
 myservo.write(90);  
- digitalWrite(buzzPin, HIGH);
+
 delay(300);
 }
   digitalWrite(trigPin, HIGH); 
@@ -50,6 +56,8 @@ delay(300);
     } else {
    
       digitalWrite(buzzPin, HIGH);
+       lcd.setCursor(0,0); // Sets the location at which subsequent text written to the LCD will be displayed
+      lcd.print("U1=E "); // Prints string " " on the LCD
     }
     
     delay(60);
