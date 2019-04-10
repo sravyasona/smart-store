@@ -34,12 +34,19 @@ void loop()
 
 if (val < thresh) {                //compare threshold to sensor value
 myservo.write(0);                 //move servo to position given by the amount of light 
+   lcd.setCursor(0,1); // Sets the location at which subsequent text written to the LCD will be displayed
+      lcd.print("L1=E "); // Prints string " " on the LCD
+      delay(1000);
+      lcd.clear();
 
 }
 
 else if (val > thresh) {   //compare threshold to sensor value
 myservo.write(90);  
-
+ lcd.setCursor(0,1); // Sets the location at which subsequent text written to the LCD will be displayed
+      lcd.print("L1=E "); // Prints string " " on the LCD
+      delay(1000);
+      lcd.clear();
 delay(300);
 }
   digitalWrite(trigPin, HIGH); 
