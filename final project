@@ -53,11 +53,17 @@ delay(300);
     if (distance <= 50 && distance >= 0) {
      
       digitalWrite(buzzPin, LOW);
+       lcd.setCursor(0,0); // Sets the location at which subsequent text written to the LCD will be displayed
+      lcd.print("U1=F"); // Prints string " " on the LCD
+      delay(1000);
+      lcd.clear();
     } else {
    
       digitalWrite(buzzPin, HIGH);
-       lcd.setCursor(0,0); // Sets the location at which subsequent text written to the LCD will be displayed
+           lcd.setCursor(0,0); // Sets the location at which subsequent text written to the LCD will be displayed
       lcd.print("U1=E "); // Prints string " " on the LCD
+      delay(1000);
+      lcd.clear();
     }
     
     delay(60);
