@@ -1,0 +1,98 @@
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12, 11, 7, 6, 5, 4);
+#include <Hx711.h>
+Hx711 scale(A0, A1);
+
+
+#include<Servo.h>
+
+Servo myservo;
+int const trigPin = 10;
+int const echoPin = 9;
+int const ldrPin = A2;
+int const servopin = 8;
+int const buzzPin = 3;
+int const buzzerPin = 13;
+
+int value;
+int thresh = 600;
+int pos = 0;
+int duration, distance;
+
+
+void setup() {
+  lcd.begin(16,2); // Initializes the interface to the LCD screen, and specifies the dimensions (width and height) of the display
+    pinMode(trigPin, OUTPUT); // trig pin will have pulses output
+  pinMode(echoPin, INPUT); // echo pin should be input to get pulse width
+  pinMode(buzzPin, OUTPUT); // buzz pin is output to control buzzering
+   pinMode(buzzerPin, OUTPUT); // buzz pin is output to control buzzering
+  pinMode(ldrPin, INPUT); // ldr pin is input to control buzzering
+    myservo.attach(servopin);
+  Serial.begin(9600);
+}
+
+void loop() {
+
+    ultra();
+    servo(); 
+       
+Serial.print(scale.getGram(), 1);
+  Serial.println(" g");
+  delay(200);
+   
+}
+
+
+void servo()
+{
+
+value = analogRead(ldrPin);            
+
+if (value < thresh) {               
+myservo.write(0);
+   lcd.setCursor(0,1); // Sets the location at which subsequent text written to the LCD will be displayed
+      lcd.print("L1=E"); // Prints string " " on the LCD
+      delay(1000);
+      lcd.clear();      
+
+}
+
+else if (value> thresh) {  
+myservo.write(90); 
+lcd.setCursor(0,1); // Sets the location at which subsequent text written to the LCD will be displayed
+      lcd.print("L1=E "); // Prints string " " on the LCD
+      delay(1000);
+      lcd.clear();
+
+}
+delay(50);
+}
+
+void ultra()
+{
+  digitalWrite(trigPin, HIGH); 
+  delay(1);
+  digitalWrite(trigPin, LOW);
+ 
+  duration = pulseIn(echoPin, HIGH);
+  
+  distance = (duration/2) / 29.1;
+    if (distance <= 50 && distance >= 0) {
+    
+      digitalWrite(buzzPin, LOW);
+       lcd.setCursor(0,0); // Sets the location at which subsequent text written to the LCD will be displayed
+      lcd.print("U1=F"); // Prints string " " on the LCD
+      delay(1000);
+      lcd.clear();
+    } else {
+    
+      digitalWrite(buzzPin, HIGH);
+     lcd.setCursor(0,0); // Sets the location at which subsequent text written to the LCD will be displayed
+      lcd.print("U1=E "); // Prints string " " on the LCD
+      delay(1000);
+      lcd.clear();
+    }
+  
+
+    delay(60);
+}
