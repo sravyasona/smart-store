@@ -3,21 +3,21 @@ The Store Management Project comprises of several ways of handling the availabil
 
 BASIC COMPONENTS:
 
-ARDUINO UNO 
-Buzzer
-16x2 LCD 
-Breadboard
-Ultrasonic sensor
-LDR sensor
-Servo motor
-Light base
-Load cell
-HX711 Load cell amplifier
-USB cable
-Connecting Wires
-Nut Bolts, Frame and base
-Potentiometer
-button
+ARDUINO UNO ,
+Buzzer,
+16x2 LCD, 
+Breadboard,
+Ultrasonic sensor,
+LDR sensor,
+Servo motor,
+Light base,
+Load cell,
+HX711 Load cell amplifier,
+USB cable,
+Connecting Wires,
+Nut Bolts, Frame and base,
+Potentiometer,
+button.
 
 In the first module, whenever the rack is empty of a particular product in a particular row of the store, the ultrasonic sensor is used to detect the presence of the goods and sends an indication to the staff member by ringing a buzzer and also displays the row number details on the LCD screen. The second module is based on the container box items when the stock becomes empty, it re-filled automatically by using a crate system connected to the container box and opens the cap by using a servo motor. In this module, servo motor runs on the basis of the sensor named LDR (light dependent resistor). The LDR detects when the container box becomes empty, and receives the light from the base that is placed at the bottom of the container. The third module is on the basis of loose product items. These items can be weighed by using a load cell and HX711 load cell amplifier.  The weight limit has to be set to the basket, whenever the basket reaches the limit where a notification is sent to the staff member, stating that the basket has to be replenished with the items.
 
